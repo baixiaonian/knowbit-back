@@ -1,0 +1,18 @@
+.env
+.env.*
+__pycache__/
+*.py[cod]
+*.log
+
+# Python virtualenv
+bin/
+lib/
+lib64/
+lib64
+include/
+pyvenv.cfg
+
+# OS
+.DS_Store
+
+
