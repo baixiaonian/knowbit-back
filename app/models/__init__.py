@@ -8,6 +8,8 @@ from .user_llm_config import UserLLMConfig
 from .document_chunk import DocumentChunk
 from .login_code import LoginCode
 from .agent_task import AgentTask
+from .agent_session import AgentSession
+from .agent_message import AgentMessage
 
 __all__ = [
     "User",
@@ -19,5 +21,7 @@ __all__ = [
     "UserLLMConfig",
     "DocumentChunk",
     "LoginCode",
-    "AgentTask"
+    "AgentTask",
+    "AgentSession",
+    "AgentMessage"
 ]

@@ -230,7 +230,11 @@ CREATE INDEX idx_code_verify ON public.login_code(verification_code, used, expir
 -- 清理过期数据的索引
 CREATE INDEX idx_code_expire ON public.login_code(expire_at) WHERE used = FALSE;
 
--- 智能体任务表
+-- 智能体任务表（已改为内存存储，不再需要数据库表）
+-- 任务管理现在使用内存存储（app/agents/tools/task_storage.py）
+-- 任务数据只在会话期间存在，通过 WebSocket 实时推送到前端
+-- 如果需要持久化任务历史，可以重新启用此表
+/*
 CREATE TABLE IF NOT EXISTS public.agent_task (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
@@ -244,3 +248,4 @@ CREATE TABLE IF NOT EXISTS public.agent_task (
 
 CREATE INDEX IF NOT EXISTS idx_agent_task_session ON public.agent_task(session_id);
 CREATE INDEX IF NOT EXISTS idx_agent_task_user ON public.agent_task(user_id);
+*/

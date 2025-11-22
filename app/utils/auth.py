@@ -85,6 +85,16 @@ async def get_current_user_id(authorization: Optional[str] = Header(None)) -> in
     #     # )
     #     return 1
     
+    # 在未提供认证头时返回默认用户（开发环境向后兼容）
+    if not authorization or authorization.strip() == "":
+        if settings.DEBUG:
+            return 1
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="未提供认证信息",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
     # 尝试提取token
     try:
         scheme, token = authorization.split()

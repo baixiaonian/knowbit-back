@@ -16,8 +16,8 @@ class Settings(BaseSettings):
     # 数据库配置
     DB_USERNAME: str = "postgres"
     DB_PASSWORD: str = "dn2hf6sn"
-    DB_HOST: str = "ai-write-db-postgresql.ns-yt5isq19.svc"
-    DB_PORT: int = 5432
+    DB_HOST: str = "dbconn.sealosbja.site"
+    DB_PORT: int = 48364
     DB_NAME: str = "ai_write_database"
     
     # JWT配置
@@ -38,6 +38,12 @@ class Settings(BaseSettings):
     # 登录验证码配置
     LOGIN_CODE_EXPIRE_SECONDS: int = 60  # 验证码有效期（1分钟）
     LOGIN_CODE_LENGTH: int = 6  # 验证码长度
+    
+    # Embedding配置（统一使用环境变量）
+    EMBEDDING_API_KEY: Optional[str] = "sk-BgRaMMUf3rFV7WszBwp6GjSNSqJLoZhSTILfka4bJwNxLDiw"
+    EMBEDDING_API_BASE: Optional[str] = "https://aiproxy.bja.sealos.run/v1"
+    EMBEDDING_MODEL: Optional[str] = "qwen3-embedding-0.6b"
+    EMBEDDING_API_MODEL: Optional[str] = "qwen3-embedding-0.6b"  # 兼容旧的环境变量名
     
     @property
     def DATABASE_URL(self) -> str:
